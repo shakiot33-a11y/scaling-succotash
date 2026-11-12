@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="kk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>«Бастауыш білім беру хабы» — 3-сынып</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Times New Roman"', 'Times', 'serif'],
+                        display: ['"Times New Roman"', 'Times', 'serif'],
+                    },
+                    colors: {
+                        royal: {
+                            DEFAULT: '#0B63B8',
+                            dark: '#084B8C',
+                            light: '#1976D2',
+                        },
+                        navy: '#0A2540',
+                        sun: {
+                            DEFAULT: '#FFD43B',
+                            hover: '#FCC419',
+                        },
+                        skybg: '#E6F4FF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apply Times New Roman globally to all elements */
+        * {
+            font-family: 'Times New Roman', Times, serif !important;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif !important;
+            color: #0A2540;
+            background-color: #FFFFFF;
+        }
+        h1, h2, h3, h4, h5, h6, p, a, span, button, input, textarea, label, .font-display, .font-sans {
+            font-family: 'Times New Roman', Times, serif !important;
+        }
+        /* Custom soft card shadows */
+        .hub-card {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+        }
+        .hub-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px -8px rgba(11, 99, 184, 0.16);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F0F7FF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #90CAF9;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0B63B8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#FFD43B] selection:text-[#0A2540] flex flex-col min-h-screen">
+
+    <!-- ==================== 1. HEADER / NAVIGATION ==================== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#FFD43B]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo (Book + Sun Rays + Pencil SVG matching mockup) -->
+                <a href="#home" onclick="setActiveNav('home')" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <svg viewBox="0 0 80 80" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Sun rays -->
+                            <circle cx="40" cy="30" r="14" fill="#FFD43B"/>
+                            <path d="M40 8V13M23 14L27 18M57 14L53 18M16 28H21M64 28H59" stroke="#FCC419" stroke-width="3.5" stroke-linecap="round"/>
+                            <!-- Open Book -->
+                            <path d="M12 36C22 33 34 36 40 42C46 36 58 33 68 36V62C58 59 46 62 40 68C34 62 22 59 12 62V36Z" fill="#2196F3" stroke="#0B63B8" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M16 39C24 37 34 39 40 44C46 39 56 37 64 39V58C56 56 46 58 40 63C34 58 24 56 16 58V39Z" fill="#FFFFFF"/>
+                            <path d="M40 42V67" stroke="#0B63B8" stroke-width="2.5" stroke-linecap="round"/>
+                            <!-- Yellow Pencil -->
+                            <g transform="rotate(32 58 38)">
+                                <rect x="54" y="20" width="8" height="32" rx="2" fill="#FFD43B" stroke="#0A2540" stroke-width="2"/>
+                                <path d="M54 52L58 60L62 52H54Z" fill="#FFE8CC" stroke="#0A2540" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M57 58L58 60L59 58H57Z" fill="#0A2540"/>
+                                <rect x="54" y="18" width="8" height="5" rx="1" fill="#FF6B6B" stroke="#0A2540" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="border-l-2 border-slate-200 pl-3">
+                        <span class="font-display font-extrabold text-base sm:text-xl leading-tight text-[#0B63B8] block">«Бастауыш</span>
+                        <span class="font-display font-extrabold text-base sm:text-xl leading-tight text-[#0B63B8] block">білім беру хабы»</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links (WITHOUT Математика & Дүниетану) -->
+                <nav id="desktop-nav" class="hidden md:flex items-center gap-1 lg:gap-2 font-bold text-sm lg:text-base">
+                    <a href="#home" data-nav="home" class="nav-link px-4 py-2 rounded-full bg-[#0B63B8] text-white shadow-sm transition-all">Басты бет</a>
+                    <a href="#reading" data-nav="reading" class="nav-link px-3.5 py-2 rounded-full text-[#0A2540] hover:bg-[#E6F4FF] hover:text-[#0B63B8] transition-all">Оқылым</a>
+                    <a href="#writing" data-nav="writing" class="nav-link px-3.5 py-2 rounded-full text-[#0A2540] hover:bg-[#E6F4FF] hover:text-[#0B63B8] transition-all">Жазылым</a>
+                    <a href="#creative" data-nav="creative" class="nav-link px-3.5 py-2 rounded-full text-[#0A2540] hover:bg-[#E6F4FF] hover:text-[#0B63B8] transition-all">Шығармашылық</a>
+                    <a href="#quiz" data-nav="quiz" class="nav-link px-3.5 py-2 rounded-full text-[#0A2540] hover:bg-[#E6F4FF] hover:text-[#0B63B8] transition-all">Өзіндік тексеру</a>
+                    <a href="#resources" data-nav="resources" class="nav-link px-3.5 py-2 rounded-full text-[#0A2540] hover:bg-[#E6F4FF] hover:text-[#0B63B8] transition-all">Ресурстар</a>
+                </nav>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" aria-label="Мәзірді ашу" class="md:hidden p-2.5 rounded-xl bg-[#E6F4FF] text-[#0B63B8] hover:bg-[#D0EBFF] focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-2 border-[#FFD43B] px-4 pt-2 pb-5 space-y-1.5 font-bold shadow-lg">
+            <a href="#home" class="mobile-link block px-4 py-3 rounded-xl bg-[#0B63B8] text-white">Басты бет</a>
+            <a href="#reading" class="mobile-link block px-4 py-3 rounded-xl text-[#0A2540] hover:bg-[#E6F4FF]">Оқылым</a>
+            <a href="#writing" class="mobile-link block px-4 py-3 rounded-xl text-[#0A2540] hover:bg-[#E6F4FF]">Жазылым</a>
+            <a href="#creative" class="mobile-link block px-4 py-3 rounded-xl text-[#0A2540] hover:bg-[#E6F4FF]">Шығармашылық</a>
+            <a href="#quiz" class="mobile-link block px-4 py-3 rounded-xl text-[#0A2540] hover:bg-[#E6F4FF]">Өзіндік тексеру</a>
+            <a href="#resources" class="mobile-link block px-4 py-3 rounded-xl text-[#0A2540] hover:bg-[#E6F4FF]">Ресурстар</a>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="flex-grow">
+
+        <!-- ==================== 2. HERO BANNER (Matching Mockup Illustration & Layout) ==================== -->
+        <section id="home" class="relative overflow-hidden bg-gradient-to-b from-[#DDF0FF] via-[#EBF6FF] to-[#F7FBFF] border-b border-sky-100">
+            <!-- Decorative Sky Clouds & Mountains Background SVG -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <svg viewBox="0 0 1440 480" class="w-full h-full object-cover" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Soft Clouds -->
+                    <path d="M120 90C120 75 135 65 150 68C158 52 182 50 194 64C210 62 224 74 222 90H120Z" fill="white" fill-opacity="0.75"/>
+                    <path d="M680 65C680 52 693 44 706 47C714 33 736 31 747 44C761 42 773 53 771 65H680Z" fill="white" fill-opacity="0.7"/>
+                    <path d="M1280 80C1280 68 1292 60 1304 62C1311 49 1331 47 1341 59C1354 57 1365 67 1363 80H1280Z" fill="white" fill-opacity="0.75"/>
+                    
+                    <!-- Snow-capped Mountains on the right -->
+                    <path d="M780 390L980 120L1160 390H780Z" fill="#B6DCFE"/>
+                    <path d="M980 120L925 195L955 185L980 205L1005 182L1035 195L980 120Z" fill="#FFFFFF"/>
+                    <path d="M1040 390L1230 145L1440 390H1040Z" fill="#9CCEFD"/>
+                    <path d="M1230 145L1180 210L1208 200L1230 218L1255 198L1282 212L1230 145Z" fill="#FFFFFF"/>
+
+                    <!-- Rolling Green Hills -->
+                    <path d="M0 370C260 320 520 385 820 355C1080 330 1290 315 1440 345V480H0V370Z" fill="#B7E49C"/>
+                    <path d="M480 410C750 350 1120 350 1440 395V480H480V410Z" fill="#95D572"/>
+
+                    <!-- Traditional Kazakh Yurt (Киіз үй) on far right -->
+                    <g transform="translate(1285, 285)">
+                        <rect x="10" y="32" width="76" height="34" rx="4" fill="#FFF9EB" stroke="#C9A66B" stroke-width="2"/>
+                        <path d="M6 34C12 12 32 4 48 4C64 4 84 12 90 34H6Z" fill="#FFF4D9" stroke="#C9A66B" stroke-width="2"/>
+                        <!-- Yurt Ornament & Door -->
+                        <path d="M14 25Q24 19 34 25T54 25T74 25T84 25" stroke="#D9480F" stroke-width="2" fill="none"/>
+                        <rect x="40" y="42" width="16" height="24" rx="2" fill="#A66E38"/>
+                        <line x1="48" y1="42" x2="48" y2="66" stroke="#7A4B20" stroke-width="1.5"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-0 lg:pt-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Column: Bold Headline, Subtitle, Yellow Pill Button -->
+                    <div class="lg:col-span-5 text-center lg:text-left pb-8 lg:pb-14 z-10">
+                        <div class="inline-flex items-center gap-2 bg-white/90 border border-sky-200 text-[#0B63B8] px-4 py-1.5 rounded-full text-sm font-extrabold mb-4 shadow-sm">
+                            <span>🌿 Ортақ тақырып: «Табиғат және біз»</span>
+                        </div>
+
+                        <div class="relative inline-block">
+                            <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[46px] text-[#0B63B8] leading-[1.15] tracking-tight">
+                                Білім әлеміне бірге саяхаттайық!
+                            </h1>
+                            <!-- Yellow Sparkle Lines matching mockup -->
+                            <svg class="hidden sm:inline-block w-10 h-10 text-[#FFD43B] -mt-6 ml-1" viewBox="0 0 40 40" fill="none">
+                                <path d="M8 14L22 8M11 23L27 21M10 31L22 35" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+
+                        <p class="mt-4 text-lg sm:text-xl font-bold text-[#0A2540]/85 leading-snug max-w-md mx-auto lg:mx-0">
+                            3-сынып оқушыларына арналған қызықты тапсырмалар мен интерактивті сабақтар
+                        </p>
+
+                        <div class="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                            <a href="#reading" class="inline-flex items-center gap-3 bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-lg sm:text-xl px-8 py-4 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
+                                <span>Сабақты бастау</span>
+                                <span class="text-2xl leading-none">→</span>
+                            </a>
+                            <button type="button" onclick="toggleObjectives()" class="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-[#0B63B8] border-2 border-[#0B63B8]/20 font-bold text-base px-5 py-3.5 rounded-full shadow-sm transition-all">
+                                <span>🎯 Оқу мақсаты</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Custom Illustrated Scene of 4 Joyful Kazakh Students at Desk -->
+                    <div class="lg:col-span-7 flex justify-center lg:justify-end items-end z-10">
+                        <svg viewBox="0 0 680 360" class="w-full max-w-2xl h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Foliage / Bushes behind desk -->
+                            <circle cx="85" cy="275" r="45" fill="#69B34C"/>
+                            <circle cx="135" cy="260" r="38" fill="#82C95E"/>
+                            <circle cx="605" cy="275" r="42" fill="#69B34C"/>
+                            <circle cx="560" cy="265" r="34" fill="#82C95E"/>
+
+                            <!-- ===== STUDENT 1 (Girl with white bows, resting chin on hands) ===== -->
+                            <g transform="translate(105, 115)">
+                                <!-- Pigtails & Hair -->
+                                <circle cx="22" cy="58" r="18" fill="#3B2314"/>
+                                <circle cx="98" cy="58" r="18" fill="#3B2314"/>
+                                <circle cx="60" cy="55" r="38" fill="#3B2314"/>
+                                <!-- White Bows -->
+                                <path d="M22 38L10 28L16 45L22 38Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+                                <path d="M22 38L34 26L28 45L22 38Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+                                <path d="M98 38L110 28L104 45L98 38Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+                                <path d="M98 38L86 26L92 45L98 38Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+                                <!-- Face -->
+                                <circle cx="60" cy="64" r="31" fill="#FDE0C6"/>
+                                <path d="M32 55C42 40 78 40 88 55C80 46 40 46 32 55Z" fill="#3B2314"/>
+                                <!-- Happy Eyes & Blush -->
+                                <circle cx="48" cy="64" r="4" fill="#1E293B"/>
+                                <circle cx="49" cy="62.5" r="1.5" fill="#FFFFFF"/>
+                                <circle cx="72" cy="64" r="4" fill="#1E293B"/>
+                                <circle cx="73" cy="62.5" r="1.5" fill="#FFFFFF"/>
+                                <ellipse cx="41" cy="72" rx="5" ry="3" fill="#FF9AA2" opacity="0.6"/>
+                                <ellipse cx="79" cy="72" rx="5" ry="3" fill="#FF9AA2" opacity="0.6"/>
+                                <path d="M53 75Q60 82 67 75" stroke="#D9480F" stroke-width="2.5" stroke-linecap="round"/>
+                                <!-- School Uniform (White shirt + Blue Vest) -->
+                                <path d="M25 145C25 112 40 100 60 100C80 100 95 112 95 145H25Z" fill="#1D4ED8"/>
+                                <path d="M46 100L60 124L74 100H46Z" fill="#FFFFFF"/>
+                                <!-- Hands under chin -->
+                                <ellipse cx="47" cy="96" rx="10" ry="8" fill="#FDE0C6" stroke="#E5B896" stroke-width="1.5"/>
+                                <ellipse cx="73" cy="96" rx="10" ry="8" fill="#FDE0C6" stroke="#E5B896" stroke-width="1.5"/>
+                            </g>
+
+                            <!-- ===== STUDENT 2 (Boy with Kazakh Takiya & National Vest reading golden book) ===== -->
+                            <g transform="translate(230, 88)">
+                                <!-- Hair & Face -->
+                                <circle cx="65" cy="75" r="35" fill="#3B2314"/>
+                                <circle cx="65" cy="82" r="32" fill="#FDE0C6"/>
+                                <!-- Kazakh Takiya (Тақия) -->
+                                <path d="M35 62C35 42 48 34 65 34C82 34 95 42 95 62H35Z" fill="#1D4ED8" stroke="#0B63B8" stroke-width="2"/>
+                                <path d="M40 55Q52 47 65 55T90 55" stroke="#FFD43B" stroke-width="2.5" fill="none"/>
+                                <circle cx="65" cy="43" r="3" fill="#FFD43B"/>
+                                <!-- Eyes & Smile -->
+                                <circle cx="53" cy="82" r="4.2" fill="#1E293B"/>
+                                <circle cx="54.2" cy="80.5" r="1.5" fill="#FFFFFF"/>
+                                <circle cx="77" cy="82" r="4.2" fill="#1E293B"/>
+                                <circle cx="78.2" cy="80.5" r="1.5" fill="#FFFFFF"/>
+                                <ellipse cx="45" cy="90" rx="5" ry="3" fill="#FF9AA2" opacity="0.6"/>
+                                <ellipse cx="85" cy="90" rx="5" ry="3" fill="#FF9AA2" opacity="0.6"/>
+                                <path d="M56 93C59 101 71 101 74 93H56Z" fill="#E11D48"/>
+                                <!-- National Blue Vest with Gold Ornament -->
+                                <path d="M22 172C22 132 40 118 65 118C90 118 108 132 108 172H22Z" fill="#1E40AF"/>
+                                <path d="M50 118L65 148L80 118H50Z" fill="#FFFFFF"/>
+                                <path d="M34 134V166M96 134V166" stroke="#FFD43B" stroke-width="3" stroke-dasharray="5 4"/>
+                                <!-- Golden Book held in hands -->
+                                <path d="M18 145C36 140 54 146 65 154C76 146 94 140 112 145V188C94 183 76 188 65 196C54 188 36 183 18 188V145Z" fill="#FCC419" stroke="#D97706" stroke-width="2.5"/>
+                                <path d="M23 149C38 145 54 150 65 157C76 150 92 145 107 149V183C92 179 76 183 65 190C54 183 38 179 23 183V149Z" fill="#FFF9DB"/>
+                                <line x1="65" y1="154" x2="65" y2="195" stroke="#D97706" stroke-width="2"/>
+                            </g>
+
+                            <!-- ===== STUDENT 3 (Girl with Magnifying Glass exploring nature) ===== -->
+                            <g transform="translate(365, 112)">
+                                <!-- Side Ponytail -->
+                                <circle cx="96" cy="48" r="20" fill="#4A2C18"/>
+                                <path d="M84 42L96 32L92 48L84 42Z" fill="#F3E8FF" stroke="#C084FC" stroke-width="1.5"/>
+                                <circle cx="58" cy="58" r="35" fill="#4A2C18"/>
+                                <!-- Face -->
+                                <circle cx="58" cy="66" r="30" fill="#FDE0C6"/>
+                                <path d="M30 56C42 42 74 42 86 56C76 48 40 48 30 56Z" fill="#4A2C18"/>
+                                <!-- Curious Eyes -->
+                                <circle cx="47" cy="66" r="4" fill="#1E293B"/>
+                                <circle cx="48" cy="64.5" r="1.5" fill="#FFFFFF"/>
+                                <circle cx="69" cy="66" r="4" fill="#1E293B"/>
+                                <circle cx="70" cy="64.5" r="1.5" fill="#FFFFFF"/>
+                                <path d="M52 77Q58 83 64 77" stroke="#D9480F" stroke-width="2.5" stroke-linecap="round"/>
+                                <!-- Uniform -->
+                                <path d="M24 148C24 114 38 102 58 102C78 102 92 114 92 148H24Z" fill="#1D4ED8"/>
+                                <path d="M45 102L58 124L71 102H45Z" fill="#FFFFFF"/>
+                                <!-- Magnifying Glass -->
+                                <g transform="translate(12, 88)">
+                                    <line x1="28" y1="28" x2="46" y2="52" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+                                    <circle cx="20" cy="20" r="18" fill="#E0F2FE" fill-opacity="0.7" stroke="#334155" stroke-width="4.5"/>
+                                    <path d="M12 13C15 10 20 10 23 13" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                                </g>
+                            </g>
+
+                            <!-- ===== STUDENT 4 (Boy pointing up towards sky/nature) ===== -->
+                            <g transform="translate(475, 95)">
+                                <!-- Hair & Face -->
+                                <circle cx="55" cy="68" r="33" fill="#2D1B10"/>
+                                <circle cx="55" cy="74" r="30" fill="#FDE0C6"/>
+                                <circle cx="44" cy="74" r="4" fill="#1E293B"/>
+                                <circle cx="45" cy="72.5" r="1.5" fill="#FFFFFF"/>
+                                <circle cx="66" cy="74" r="4" fill="#1E293B"/>
+                                <circle cx="67" cy="72.5" r="1.5" fill="#FFFFFF"/>
+                                <path d="M48 85C51 92 61 92 64 85H48Z" fill="#E11D48"/>
+                                <!-- Uniform & National Vest -->
+                                <path d="M20 165C20 126 35 112 55 112C75 112 90 126 90 165H20Z" fill="#1E40AF"/>
+                                <path d="M42 112L55 138L68 112H42Z" fill="#FFFFFF"/>
+                                <path d="M30 128V158M80 128V158" stroke="#FFD43B" stroke-width="2.5" stroke-dasharray="4 3"/>
+                                <!-- Raised Pointing Arm -->
+                                <path d="M84 126L118 82" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+                                <circle cx="122" cy="77" r="8" fill="#FDE0C6"/>
+                            </g>
+
+                            <!-- ===== WOODEN DESK FOREGROUND ===== -->
+                            <rect x="45" y="290" width="590" height="22" rx="8" fill="#E5A96F" stroke="#B87A40" stroke-width="2"/>
+                            <rect x="55" y="312" width="570" height="48" fill="#D4945A"/>
+
+                            <!-- Stack of Books on Left -->
+                            <g transform="translate(88, 250)">
+                                <rect x="0" y="22" width="76" height="18" rx="4" fill="#3B82F6" stroke="#1D4ED8" stroke-width="2"/>
+                                <rect x="6" y="26" width="64" height="10" rx="2" fill="#FFFFFF"/>
+                                <rect x="4" y="4" width="70" height="18" rx="4" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                                <rect x="10" y="8" width="58" height="10" rx="2" fill="#FFFFFF"/>
+                            </g>
+
+                            <!-- Pencil Cup -->
+                            <g transform="translate(185, 244)">
+                                <path d="M8 14L4 46H32L28 14H8Z" fill="#2563EB" stroke="#1E3A8A" stroke-width="2"/>
+                                <rect x="10" y="2" width="5" height="14" rx="1" fill="#EF4444"/>
+                                <rect x="17" y="0" width="5" height="16" rx="1" fill="#FFD43B"/>
+                                <rect x="23" y="4" width="5" height="12" rx="1" fill="#22C55E"/>
+                            </g>
+
+                            <!-- Open Notebook in Center -->
+                            <g transform="translate(275, 272)">
+                                <path d="M0 10C25 4 50 8 65 14C80 8 105 4 130 10L136 22H-6L0 10Z" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+                            </g>
+
+                            <!-- Potted Green Plant (Nature Symbol) -->
+                            <g transform="translate(425, 228)">
+                                <path d="M12 36H44L39 62H17L12 36Z" fill="#C2410C" stroke="#7C2D12" stroke-width="2"/>
+                                <rect x="9" y="30" width="38" height="7" rx="3" fill="#EA580C"/>
+                                <path d="M28 30C28 16 14 10 8 18C14 24 22 26 28 30Z" fill="#22C55E"/>
+                                <path d="M28 30C28 14 42 8 48 16C42 22 34 25 28 30Z" fill="#16A34A"/>
+                                <path d="M28 30C28 12 28 4 28 4C34 10 34 20 28 30Z" fill="#4ADE80"/>
+                            </g>
+
+                            <!-- Globe & Books on Right -->
+                            <g transform="translate(495, 200)">
+                                <!-- Books base -->
+                                <rect x="0" y="72" width="68" height="18" rx="4" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+                                <rect x="4" y="56" width="62" height="16" rx="4" fill="#FACC15" stroke="#CA8A04" stroke-width="2"/>
+                                <!-- Globe -->
+                                <circle cx="64" cy="40" r="30" fill="#38BDF8" stroke="#0284C7" stroke-width="2.5"/>
+                                <path d="M50 24C58 20 68 26 64 36C60 44 50 42 48 34C46 28 48 26 50 24Z" fill="#4ADE80"/>
+                                <path d="M72 34C80 34 86 42 80 52C74 58 66 52 68 44C69 38 70 34 72 34Z" fill="#22C55E"/>
+                                <path d="M42 66C54 76 76 74 86 60" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="64" y1="72" x2="64" y2="88" stroke="#475569" stroke-width="4"/>
+                                <rect x="48" y="86" width="32" height="6" rx="3" fill="#334155"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== COLLAPSIBLE LEARNING OBJECTIVES CARD ==================== -->
+        <div id="objectives-panel" class="hidden bg-[#F0F7FF] border-b border-sky-200 transition-all">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-sky-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-display font-extrabold text-xl text-[#0B63B8] flex items-center gap-2">
+                            <span>🎯</span> Оқу мақсаттары (3-сынып — «Табиғат және біз»)
+                        </h2>
+                        <button onclick="toggleObjectives()" class="text-slate-400 hover:text-slate-600 font-bold text-sm px-3 py-1 rounded-lg bg-slate-100">Жабу ✕</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-[#E6F4FF]/70 border border-sky-200">
+                            <span class="inline-block px-2.5 py-0.5 rounded-md bg-[#0B63B8] text-white text-xs font-extrabold mb-1">Оқылым • 3.1.2.1</span>
+                            <p class="font-bold text-[#0A2540]">Мәтіннің мазмұнын түсіну, негізгі ойды анықтау және сұрақтарға жауап беру.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-[#FFF4E6]/70 border border-amber-200">
+                            <span class="inline-block px-2.5 py-0.5 rounded-md bg-amber-600 text-white text-xs font-extrabold mb-1">Жазылым • 3.3.1.1</span>
+                            <p class="font-bold text-[#0A2540]">Тақырып бойынша өз ойын жүйелеп, грамматикалық және пунктуациялық нормаларды сақтап жазу.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 3. FOUR CATEGORY CARDS (Matching Mockup Cards, WITHOUT Math & Science) ==================== -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Оқылым (Soft Sky Blue) -->
+                <a href="#reading" class="hub-card relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#E3F2FD] to-[#D0EBFF] p-6 pt-8 flex flex-col justify-between min-h-[210px] border border-sky-200/70 group">
+                    <!-- Decorative bottom wave -->
+                    <div class="absolute bottom-0 inset-x-0 h-10 bg-[#BCE0FD]/60 rounded-t-[50%] pointer-events-none"></div>
+                    <div class="flex justify-center items-center my-2 z-10">
+                        <!-- Open Book with Red Bookmark & Yellow Rays SVG -->
+                        <svg viewBox="0 0 110 90" class="w-24 h-20 group-hover:scale-105 transition-transform" fill="none">
+                            <path d="M35 16L30 7M46 13L45 4M57 15L61 6" stroke="#FFD43B" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M14 28C28 24 46 28 55 36C64 28 82 24 96 28V68C82 64 64 68 55 76C46 68 28 64 14 68V28Z" fill="#2196F3" stroke="#0B63B8" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M19 32C31 29 46 32 55 39C64 32 79 29 91 32V62C79 59 64 62 55 69C46 62 31 59 19 62V32Z" fill="#FFFFFF"/>
+                            <path d="M26 40C35 39 44 41 49 44M26 48C35 47 44 49 49 52M84 40C75 39 66 41 61 44M84 48C75 47 66 49 61 52" stroke="#90CAF9" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M55 36V75" stroke="#0B63B8" stroke-width="3"/>
+                            <!-- Red Bookmark -->
+                            <path d="M76 62V80L81 76L86 80V62H76Z" fill="#FA5252"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 z-10">
+                        <span class="font-display font-extrabold text-2xl text-[#0A2540]">Оқылым</span>
+                        <span class="w-10 h-10 rounded-full bg-[#FFD43B] group-hover:bg-[#FCC419] text-[#0A2540] flex items-center justify-center font-extrabold text-xl shadow-sm transition-colors">→</span>
+                    </div>
+                </a>
+
+                <!-- Card 2: Жазылым (Soft Warm Peach/Cream) -->
+                <a href="#writing" class="hub-card relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#FFF8E7] to-[#FFECB3]/75 p-6 pt-8 flex flex-col justify-between min-h-[210px] border border-amber-200/70 group">
+                    <div class="absolute bottom-0 inset-x-0 h-10 bg-[#FFE082]/45 rounded-t-[50%] pointer-events-none"></div>
+                    <div class="flex justify-center items-center my-2 z-10">
+                        <!-- Illustrated Notebook & Pencil SVG -->
+                        <svg viewBox="0 0 110 90" class="w-24 h-20 group-hover:scale-105 transition-transform" fill="none">
+                            <rect x="26" y="14" width="48" height="62" rx="8" fill="#FFFFFF" stroke="#F59F00" stroke-width="3"/>
+                            <path d="M36 28H64M36 39H64M36 50H54" stroke="#FCC419" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="26" cy="26" r="3.5" fill="#F59F00"/>
+                            <circle cx="26" cy="44" r="3.5" fill="#F59F00"/>
+                            <circle cx="26" cy="62" r="3.5" fill="#F59F00"/>
+                            <!-- Pencil -->
+                            <g transform="rotate(30 78 44)">
+                                <rect x="72" y="16" width="11" height="44" rx="2.5" fill="#FFD43B" stroke="#0A2540" stroke-width="2.5"/>
+                                <path d="M72 60L77.5 70L83 60H72Z" fill="#FFE8CC" stroke="#0A2540" stroke-width="2.5" stroke-linejoin="round"/>
+                                <rect x="72" y="13" width="11" height="7" rx="1.5" fill="#FF6B6B" stroke="#0A2540" stroke-width="2.5"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 z-10">
+                        <span class="font-display font-extrabold text-2xl text-[#0A2540]">Жазылым</span>
+                        <span class="w-10 h-10 rounded-full bg-[#FFD43B] group-hover:bg-[#FCC419] text-[#0A2540] flex items-center justify-center font-extrabold text-xl shadow-sm transition-colors">→</span>
+                    </div>
+                </a>
+
+                <!-- Card 3: Шығармашылық (Soft Lavender) -->
+                <a href="#creative" class="hub-card relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#F3E8FF] to-[#E5DBFF] p-6 pt-8 flex flex-col justify-between min-h-[210px] border border-purple-200/70 group">
+                    <div class="absolute bottom-0 inset-x-0 h-10 bg-[#D0BFFF]/50 rounded-t-[50%] pointer-events-none"></div>
+                    <div class="flex justify-center items-center my-2 z-10">
+                        <!-- Artist Palette & Paintbrush SVG matching mockup -->
+                        <svg viewBox="0 0 110 90" class="w-24 h-20 group-hover:scale-105 transition-transform" fill="none">
+                            <path d="M52 16C30 16 14 31 14 49C14 66 28 76 44 76C50 76 53 71 53 67C53 63 51 60 51 57C51 53 54 50 59 50H67C80 50 90 42 90 31C90 21 73 16 52 16Z" fill="#F3D9FA" stroke="#B197FC" stroke-width="2.5"/>
+                            <!-- Paint Dots -->
+                            <circle cx="34" cy="34" r="6" fill="#FF6B6B"/>
+                            <circle cx="52" cy="27" r="6" fill="#FFD43B"/>
+                            <circle cx="70" cy="31" r="6" fill="#51CF66"/>
+                            <circle cx="30" cy="52" r="6" fill="#339AF0"/>
+                            <!-- Thumb Hole -->
+                            <circle cx="71" cy="40" r="4.5" fill="#F3E8FF" stroke="#B197FC" stroke-width="2"/>
+                            <!-- Paintbrush -->
+                            <g transform="rotate(35 76 48)">
+                                <rect x="74" y="8" width="6" height="46" rx="3" fill="#B08968" stroke="#7F5539" stroke-width="2"/>
+                                <rect x="73" y="52" width="8" height="7" fill="#CED4DA"/>
+                                <path d="M72 59C72 67 77 74 77 74C77 74 82 67 82 59H72Z" fill="#228BE6"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 z-10">
+                        <span class="font-display font-extrabold text-xl sm:text-2xl text-[#0A2540]">Шығармашылық</span>
+                        <span class="w-10 h-10 rounded-full bg-[#FFD43B] group-hover:bg-[#FCC419] text-[#0A2540] flex items-center justify-center font-extrabold text-xl shadow-sm transition-colors shrink-0">→</span>
+                    </div>
+                </a>
+
+                <!-- Card 4: Өзіндік тексеру (Soft Mint/Green) -->
+                <a href="#quiz" class="hub-card relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#E6FCF5] to-[#C3FAE8] p-6 pt-8 flex flex-col justify-between min-h-[210px] border border-emerald-200/70 group">
+                    <div class="absolute bottom-0 inset-x-0 h-10 bg-[#96F2D7]/50 rounded-t-[50%] pointer-events-none"></div>
+                    <div class="flex justify-center items-center my-2 z-10">
+                        <!-- Golden Trophy & Checkmark Quiz SVG -->
+                        <svg viewBox="0 0 110 90" class="w-24 h-20 group-hover:scale-105 transition-transform" fill="none">
+                            <!-- Trophy Cup -->
+                            <path d="M36 18H74V38C74 49 65 57 55 57C45 57 36 49 36 38V18Z" fill="#FFD43B" stroke="#F08C00" stroke-width="3"/>
+                            <path d="M36 24H25C25 36 31 41 36 41M74 24H85C85 36 79 41 74 41" stroke="#F08C00" stroke-width="3" stroke-linecap="round"/>
+                            <rect x="50" y="57" width="10" height="12" fill="#F08C00"/>
+                            <rect x="40" y="69" width="30" height="8" rx="3" fill="#0B63B8"/>
+                            <!-- Checkmark inside Trophy -->
+                            <path d="M47 36L53 42L64 30" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 z-10">
+                        <span class="font-display font-extrabold text-xl sm:text-2xl text-[#0A2540]">Өзіндік тексеру</span>
+                        <span class="w-10 h-10 rounded-full bg-[#FFD43B] group-hover:bg-[#FCC419] text-[#0A2540] flex items-center justify-center font-extrabold text-xl shadow-sm transition-colors shrink-0">→</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- ==================== 4. ОҚЫЛЫМ (READING SECTION) ==================== -->
+        <section id="reading" class="py-14 bg-[#F5FAFF] border-t border-sky-100">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <span class="inline-block px-3.5 py-1 rounded-full bg-[#D0EBFF] text-[#0B63B8] font-extrabold text-sm mb-2">📖 1-бөлім • Оқылым</span>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#0B63B8]">«Туған өлке табиғаты»</h2>
+                    </div>
+
+                    <!-- Inclusive Text Size Toggle (A- / A+) -->
+                    <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl border border-sky-200 shadow-sm self-start sm:self-auto">
+                        <span class="text-sm font-bold text-slate-500">Қаріп өлшемі:</span>
+                        <button type="button" onclick="changeReadingSize(-2)" class="w-9 h-9 rounded-xl bg-sky-50 hover:bg-sky-100 text-[#0B63B8] font-extrabold text-base transition-colors" title="Кішірейту">A-</button>
+                        <button type="button" onclick="changeReadingSize(2)" class="w-9 h-9 rounded-xl bg-[#0B63B8] hover:bg-[#084B8C] text-white font-extrabold text-base transition-colors" title="Үлкейту">A+</button>
+                    </div>
+                </div>
+
+                <!-- Reading Passage Card -->
+                <div class="bg-white rounded-[28px] p-6 sm:p-10 shadow-sm border-2 border-sky-100 mb-10">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                        <div class="flex items-center gap-2.5 text-[#0B63B8] font-extrabold">
+                            <span class="text-2xl">🍂</span>
+                            <span>Мәтінді мұқият оқып шық (~145 сөз)</span>
+                        </div>
+                        <span class="text-xs font-extrabold bg-amber-100 text-amber-800 px-3 py-1 rounded-full">3-сынып</span>
+                    </div>
+
+                    <article id="reading-text" class="text-lg sm:text-xl text-[#0A2540] leading-relaxed space-y-5 font-semibold">
+                        <p>
+                            Күз мезгілі келіп, табиғат керемет түске боялды. Орман іші алтын жапырақтармен көмкеріліп, айнала әсем көрініске енді. Ағаштардың жапырақтары сары, қызыл түске еніп, желмен сыбдырлай ұшады. Орман тұрғындары қысқы ұйқыға немесе суық маусымға дайындық жасай бастады. Тиіндер бұтақтардың арасында секіріп, қысқа арналған жаңғақтар мен тұқымдарды жинап, індеріне тасуда. Ал аюлар болса, қоңыр күзде барынша қорек жинап, қалың ұйқыға әзірленеді.
+                        </p>
+                        <p>
+                            Табиғат – біздің ортақ үйіміз. Оның әрбір бөлшегі өзара тығыз байланысты. Орманды, өзендер мен көлдерді таза ұстау – әрбір саналы азаматтың міндеті. Егер біз табиғатты қорғасақ, ол бізге өзінің таза ауасы мен мол байлығын сыйлайды. Туған жерімізді аялайық, балалар!
+                        </p>
+                    </article>
+                </div>
+
+                <!-- 5 Comprehension Questions with Expandable Hints -->
+                <div class="bg-white rounded-[28px] p-6 sm:p-8 shadow-sm border-2 border-sky-100">
+                    <h3 class="font-display font-extrabold text-2xl text-[#0A2540] mb-2">❓ Мәтін бойынша 5 сұрақ</h3>
+                    <p class="text-slate-600 font-semibold mb-6">Алдымен өзің жауап беріп көр, содан кейін «Жауапты тексеру» батырмасын басып салыстыр.</p>
+
+                    <div class="space-y-4" id="reading-questions-list">
+                        <!-- Q1 -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FBFF] border border-sky-100">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <p class="font-extrabold text-lg text-[#0A2540]">1. Мәтінде қай мезгіл туралы айтылған?</p>
+                                <button type="button" onclick="toggleHint(1)" class="self-start sm:self-auto px-4 py-1.5 rounded-full bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-sm shrink-0 transition-colors">
+                                    Жауапты тексеру 💡
+                                </button>
+                            </div>
+                            <div id="hint-1" class="hidden mt-3 pt-3 border-t border-sky-200/70 text-[#0B63B8] font-bold">
+                                ✅ Үлгі жауап: Мәтінде күз мезгілі туралы айтылған.
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FBFF] border border-sky-100">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <p class="font-extrabold text-lg text-[#0A2540]">2. Орман тұрғындары қысқы маусымға қалай дайындалады?</p>
+                                <button type="button" onclick="toggleHint(2)" class="self-start sm:self-auto px-4 py-1.5 rounded-full bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-sm shrink-0 transition-colors">
+                                    Жауапты тексеру 💡
+                                </button>
+                            </div>
+                            <div id="hint-2" class="hidden mt-3 pt-3 border-t border-sky-200/70 text-[#0B63B8] font-bold">
+                                ✅ Үлгі жауап: Олар қысқа арналған азық-қорек жинайды және қысқы қалың ұйқыға әзірленеді.
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FBFF] border border-sky-100">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <p class="font-extrabold text-lg text-[#0A2540]">3. Тиіндер қысқа қандай қорек жинайды?</p>
+                                <button type="button" onclick="toggleHint(3)" class="self-start sm:self-auto px-4 py-1.5 rounded-full bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-sm shrink-0 transition-colors">
+                                    Жауапты тексеру 💡
+                                </button>
+                            </div>
+                            <div id="hint-3" class="hidden mt-3 pt-3 border-t border-sky-200/70 text-[#0B63B8] font-bold">
+                                ✅ Үлгі жауап: Тиіндер қысқа арналған жаңғақтар мен тұқымдарды жинап, індеріне тасиды.
+                            </div>
+                        </div>
+
+                        <!-- Q4 -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FBFF] border border-sky-100">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <p class="font-extrabold text-lg text-[#0A2540]">4. Аюлар қыс мезгілінде не істейді?</p>
+                                <button type="button" onclick="toggleHint(4)" class="self-start sm:self-auto px-4 py-1.5 rounded-full bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-sm shrink-0 transition-colors">
+                                    Жауапты тексеру 💡
+                                </button>
+                            </div>
+                            <div id="hint-4" class="hidden mt-3 pt-3 border-t border-sky-200/70 text-[#0B63B8] font-bold">
+                                ✅ Үлгі жауап: Аюлар қоңыр күзде қорек жинап, қыста қалың ұйқыға кетеді.
+                            </div>
+                        </div>
+
+                        <!-- Q5 -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FBFF] border border-sky-100">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <p class="font-extrabold text-lg text-[#0A2540]">5. Неліктен табиғатты қорғау әрбір адамның міндеті болып саналады?</p>
+                                <button type="button" onclick="toggleHint(5)" class="self-start sm:self-auto px-4 py-1.5 rounded-full bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-sm shrink-0 transition-colors">
+                                    Жауапты тексеру 💡
+                                </button>
+                            </div>
+                            <div id="hint-5" class="hidden mt-3 pt-3 border-t border-sky-200/70 text-[#0B63B8] font-bold">
+                                ✅ Үлгі жауап: Өйткені табиғат – біздің ортақ үйіміз. Оны қорғасақ, ол бізге таза ауа мен мол байлығын сыйлайды.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 5. ЖАЗЫЛЫМ (WRITING SECTION) ==================== -->
+        <section id="writing" class="py-14 bg-white border-t border-slate-100">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-[#FFF3BF] text-amber-900 font-extrabold text-sm mb-2">✍️ 2-бөлім • Жазылым</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#0B63B8]">«Менің туған өлкеме қосқан үлесім»</h2>
+                    <p class="text-lg font-bold text-slate-600 mt-1">Осы тақырыпта 4–5 сөйлемнен тұратын шағын эссе немесе әңгіме жазыңыз.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Left: Interactive Writing Workspace (Privacy-safe, local only) -->
+                    <div class="lg:col-span-7 bg-[#FFFDF5] rounded-[28px] p-6 sm:p-8 border-2 border-amber-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <label for="essay-input" class="font-extrabold text-lg text-[#0A2540]">Менің жазба жұмысым:</label>
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">🔒 Жеке деректер сақталмайды</span>
+                            </div>
+                            <textarea id="essay-input" rows="7" placeholder="Осында 4–5 сөйлемнен тұратын әңгімеңді жаз... Мысалы: Мен туған өлкемнің табиғатын қатты жақсы көремін..." class="w-full rounded-2xl border-2 border-amber-200 focus:border-[#0B63B8] focus:ring-0 p-4 text-lg font-semibold text-[#0A2540] bg-white resize-none leading-relaxed"></textarea>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-amber-200/70 flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex items-center gap-4 text-sm font-extrabold">
+                                <span class="bg-white px-3.5 py-1.5 rounded-xl border border-amber-200 text-[#0A2540]">Сөйлем саны: <span id="sentence-count" class="text-[#0B63B8] text-base">0</span> / 4–5</span>
+                                <span class="bg-white px-3.5 py-1.5 rounded-xl border border-amber-200 text-[#0A2540]">Сөз саны: <span id="word-count" class="text-[#0B63B8] text-base">0</span></span>
+                            </div>
+                            <button type="button" onclick="clearEssay()" class="text-sm font-bold text-slate-500 hover:text-rose-600 px-3 py-1.5 rounded-xl hover:bg-rose-50 transition-colors">
+                                Тазалау
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: 3 Descriptors Interactive Checklist -->
+                    <div class="lg:col-span-5 bg-[#F5FAFF] rounded-[28px] p-6 sm:p-8 border-2 border-sky-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display font-extrabold text-xl text-[#0B63B8] mb-2">📋 Бағалау дескрипторлары</h3>
+                            <p class="text-sm font-bold text-slate-600 mb-5">Жазып болған соң, әр дескрипторды белгілеп өзіңді бағала:</p>
+
+                            <div class="space-y-3.5">
+                                <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-sky-200 cursor-pointer hover:border-[#0B63B8] transition-colors">
+                                    <input type="checkbox" class="descriptor-check mt-1 w-5 h-5 rounded text-[#0B63B8] focus:ring-[#0B63B8]" onchange="updateWritingScore()">
+                                    <span class="text-sm sm:text-base font-bold text-[#0A2540]">
+                                        1. Тақырыптың мәнін ашып, өз ойын жүйелі түрде жеткізеді <span class="text-[#0B63B8] font-extrabold">(1 ұпай)</span>.
+                                    </span>
+                                </label>
+
+                                <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-sky-200 cursor-pointer hover:border-[#0B63B8] transition-colors">
+                                    <input type="checkbox" class="descriptor-check mt-1 w-5 h-5 rounded text-[#0B63B8] focus:ring-[#0B63B8]" onchange="updateWritingScore()">
+                                    <span class="text-sm sm:text-base font-bold text-[#0A2540]">
+                                        2. Сөйлемдерді дұрыс құрастырып, пунктуациялық ережелерді сақтайды <span class="text-[#0B63B8] font-extrabold">(1 ұпай)</span>.
+                                    </span>
+                                </label>
+
+                                <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-sky-200 cursor-pointer hover:border-[#0B63B8] transition-colors">
+                                    <input type="checkbox" class="descriptor-check mt-1 w-5 h-5 rounded text-[#0B63B8] focus:ring-[#0B63B8]" onchange="updateWritingScore()">
+                                    <span class="text-sm sm:text-base font-bold text-[#0A2540]">
+                                        3. Орфографиялық сауаттылықты сақтап, қатесіз жазады <span class="text-[#0B63B8] font-extrabold">(1 ұпай)</span>.
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 rounded-2xl bg-[#FFD43B]/30 border border-[#FFD43B] flex items-center justify-between">
+                            <span class="font-extrabold text-[#0A2540]">Өзіндік бағалау ұпайы:</span>
+                            <span id="writing-score" class="font-display font-extrabold text-2xl text-[#0B63B8]">0 / 3 ұпай</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 6. ШЫҒАРМАШЫЛЫҚ (CREATIVITY SECTION) ==================== -->
+        <section id="creative" class="py-14 bg-[#F8F5FF] border-t border-purple-100">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-[#E5DBFF] text-purple-900 font-extrabold text-sm mb-2">🎨 3-бөлім • Шығармашылық</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#0B63B8]">«Табиғат сыйы» қолөнер және сурет байқауы</h2>
+                    <p class="text-lg font-bold text-slate-700 mt-2 max-w-3xl">
+                        Күз мезгілінде түскен жапырақтардан, бұтақтардан немесе қағаз қалдықтарынан аппликация жасаңыз немесе табиғат тақырыбында сурет салыңыз.
+                    </p>
+                </div>
+
+                <!-- Interactive Padlet-style Showcase & Digital Drawing Canvas -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    
+                    <!-- Left: Mini Digital Drawing Canvas right on the page -->
+                    <div class="lg:col-span-6 bg-white rounded-[28px] p-6 border-2 border-purple-200 shadow-sm">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <h3 class="font-display font-extrabold text-xl text-[#0A2540]">🖌️ Сандық сурет тақтасы</h3>
+                            <div class="flex items-center gap-1.5">
+                                <button type="button" onclick="setBrushColor('#16A34A')" class="w-7 h-7 rounded-full bg-[#16A34A] border-2 border-white shadow" title="Жасыл"></button>
+                                <button type="button" onclick="setBrushColor('#EAB308')" class="w-7 h-7 rounded-full bg-[#EAB308] border-2 border-white shadow" title="Сары"></button>
+                                <button type="button" onclick="setBrushColor('#EA580C')" class="w-7 h-7 rounded-full bg-[#EA580C] border-2 border-white shadow" title="Қызғылт сары"></button>
+                                <button type="button" onclick="setBrushColor('#0B63B8')" class="w-7 h-7 rounded-full bg-[#0B63B8] border-2 border-white shadow" title="Көк"></button>
+                                <button type="button" onclick="setBrushColor('#7C2D12')" class="w-7 h-7 rounded-full bg-[#7C2D12] border-2 border-white shadow" title="Қоңыр"></button>
+                            </div>
+                        </div>
+
+                        <div id="canvas-wrapper" class="w-full h-64 rounded-2xl border-2 border-dashed border-purple-300 bg-[#FFFDF9] overflow-hidden touch-none">
+                            <canvas id="nature-canvas" class="w-full h-full cursor-crosshair block"></canvas>
+                        </div>
+
+                        <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+                            <button type="button" onclick="clearCanvas()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition-colors">
+                                🗑️ Тазалау
+                            </button>
+                            <button type="button" onclick="addCanvasToBoard()" class="px-5 py-2.5 rounded-xl bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-sm shadow-sm transition-colors">
+                                📌 Көрме тақтасына қосу
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Virtual Padlet Showcase Board -->
+                    <div class="lg:col-span-6 bg-white rounded-[28px] p-6 border-2 border-purple-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-display font-extrabold text-xl text-[#0A2540]">🖼️ «Табиғат сыйы» көрме тақтасы</h3>
+                                <a href="https://padlet.com" target="_blank" rel="noopener noreferrer" class="text-xs font-extrabold px-3 py-1.5 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-900 transition-colors">
+                                    Padlet-ке өту ↗
+                                </a>
+                            </div>
+
+                            <!-- Upload Photo Preview Form (No personal names required) -->
+                            <div class="p-4 rounded-2xl bg-[#F8F5FF] border border-purple-200 mb-4">
+                                <div class="flex flex-col sm:flex-row gap-2.5">
+                                    <input type="text" id="craft-title" placeholder="Жұмыс атауы (мыс: Алтын күз)" class="flex-grow px-3.5 py-2 rounded-xl border border-purple-200 bg-white text-sm font-bold text-[#0A2540] focus:outline-none focus:border-[#0B63B8]">
+                                    <label class="px-4 py-2 rounded-xl bg-[#0B63B8] hover:bg-[#084B8C] text-white font-extrabold text-sm cursor-pointer text-center shrink-0 transition-colors">
+                                        📷 Фото жүктеу
+                                        <input type="file" id="craft-photo" accept="image/*" class="hidden" onchange="handleCraftUpload(event)">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Gallery Grid -->
+                            <div id="showcase-grid" class="grid grid-cols-2 gap-3 max-h-60 overflow-y-auto pr-1">
+                                <!-- Sample Card 1 -->
+                                <div class="p-3 rounded-2xl bg-amber-50 border border-amber-200">
+                                    <div class="h-24 rounded-xl bg-white flex items-center justify-center mb-2 overflow-hidden">
+                                        <svg viewBox="0 0 100 80" class="w-20 h-16">
+                                            <path d="M50 12C35 28 24 44 50 64C76 44 65 28 50 12Z" fill="#F59E0B"/>
+                                            <path d="M50 12V72" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+                                            <path d="M50 34L38 26M50 46L62 38" stroke="#FEF3C7" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <p class="font-extrabold text-sm text-[#0A2540] truncate">Үлгі: Жапырақ аппликация</p>
+                                </div>
+                                <!-- Sample Card 2 -->
+                                <div class="p-3 rounded-2xl bg-emerald-50 border border-emerald-200">
+                                    <div class="h-24 rounded-xl bg-white flex items-center justify-center mb-2 overflow-hidden">
+                                        <svg viewBox="0 0 100 80" class="w-20 h-16">
+                                            <circle cx="50" cy="36" r="22" fill="#22C55E"/>
+                                            <circle cx="36" cy="42" r="15" fill="#16A34A"/>
+                                            <circle cx="64" cy="42" r="15" fill="#4ADE80"/>
+                                            <rect x="46" y="48" width="8" height="24" rx="2" fill="#92400E"/>
+                                        </svg>
+                                    </div>
+                                    <p class="font-extrabold text-sm text-[#0A2540] truncate">Үлгі: Туған жер орманы</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 7. ӨЗІНДІК ТЕКСЕРУ (10-QUESTION INTERACTIVE QUIZ) ==================== -->
+        <section id="quiz" class="py-14 bg-white border-t border-slate-100">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-[#C3FAE8] text-emerald-900 font-extrabold text-sm mb-2">🏆 4-бөлім • Өзіндік тексеру</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#0B63B8]">10 сұрақтық интерактивті тест</h2>
+                    <p class="text-lg font-bold text-slate-600 mt-1">Барлық сұрақтарға жауап беріп, біліміңді тексер!</p>
+                </div>
+
+                <div class="bg-[#F5FAFF] rounded-[32px] p-6 sm:p-10 border-2 border-sky-200 shadow-sm">
+                    <form id="quiz-form" class="space-y-6">
+                        <!-- Questions injected cleanly via JS for instant feedback & explanations -->
+                        <div id="quiz-questions-wrapper" class="space-y-6"></div>
+
+                        <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+                            <button type="button" id="check-quiz-btn" onclick="gradeQuiz()" class="px-9 py-4 rounded-full bg-[#FFD43B] hover:bg-[#FCC419] text-[#0A2540] font-extrabold text-lg sm:text-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
+                                Нәтижені тексеру ✅
+                            </button>
+                            <button type="button" onclick="resetQuiz()" class="px-7 py-4 rounded-full bg-white hover:bg-slate-100 text-[#0B63B8] border-2 border-sky-200 font-extrabold text-base transition-colors">
+                                Қайта тапсыру 🔄
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Score Result Box -->
+                    <div id="quiz-result-box" class="hidden mt-8 p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#FFD43B] text-center shadow-md">
+                        <div id="result-stars" class="text-4xl mb-2">⭐⭐⭐</div>
+                        <h3 id="result-score-heading" class="font-display font-extrabold text-2xl sm:text-3xl text-[#0B63B8]"></h3>
+                        <p id="result-feedback-text" class="mt-2 text-lg font-bold text-[#0A2540]"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 8. ПАЙДАЛЫ РЕСУРСТАР (USEFUL RESOURCES) ==================== -->
+        <section id="resources" class="py-14 bg-[#F5FAFF] border-t border-sky-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-[#D0EBFF] text-[#0B63B8] font-extrabold text-sm mb-2">🌐 5-бөлім • Пайдалы ресурстар</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#0B63B8]">Қосымша білім беру платформалары</h2>
+                    <p class="text-lg font-bold text-slate-600 mt-1">3-сынып оқушыларының жас ерекшелігіне сай танымдық ресурстар</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Resource 1: National Geographic Kids -->
+                    <div class="hub-card bg-white rounded-[28px] p-7 border-2 border-amber-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-[#FFD43B] text-[#0A2540] flex items-center justify-center text-3xl mb-5 shadow-sm">
+                                🌍
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl text-[#0A2540] mb-2">National Geographic Kids</h3>
+                            <p class="text-slate-600 font-bold leading-relaxed">
+                                Жануарлар мен табиғат туралы қызықты мәліметтер, танымдық фотосуреттер және балаларға арналған ғылыми деректер.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="https://kids.nationalgeographic.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-extrabold text-[#0B63B8] hover:text-[#084B8C]">
+                                <span>Ресурсқа өту</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 2: BilimLand -->
+                    <div class="hub-card bg-white rounded-[28px] p-7 border-2 border-sky-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-[#0B63B8] text-white flex items-center justify-center text-3xl mb-5 shadow-sm">
+                                💻
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl text-[#0A2540] mb-2">BilimLand</h3>
+                            <p class="text-slate-600 font-bold leading-relaxed">
+                                Бастауыш сыныптарға арналған интерактивті сабақтар, анимациялық бейнематериалдар мен қызықты тапсырмалар.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="https://bilimland.kz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-extrabold text-[#0B63B8] hover:text-[#084B8C]">
+                                <span>Ресурсқа өту</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 3: LearningApps.org -->
+                    <div class="hub-card bg-white rounded-[28px] p-7 border-2 border-purple-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-3xl mb-5 shadow-sm">
+                                🧩
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl text-[#0A2540] mb-2">LearningApps.org</h3>
+                            <p class="text-slate-600 font-bold leading-relaxed">
+                                Ойын түріндегі танымдық жаттығулар, сәйкестендіру тапсырмалары, пазлдар және викториналар жинағы.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100">
+                            <a href="https://learningapps.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-extrabold text-[#0B63B8] hover:text-[#084B8C]">
+                                <span>Ресурсқа өту</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== 9. FOOTER (Matching Mockup with Kazakh Ornament Wave) ==================== -->
+    <footer class="relative overflow-hidden bg-gradient-to-r from-[#EBF5FF] via-[#DDF0FF] to-[#BEE0FD] border-t border-sky-200 py-7">
+        <!-- Decorative Kazakh Traditional Ornament (Ою-өрнек) SVG on the right matching mockup -->
+        <div class="absolute right-0 bottom-0 top-0 w-72 sm:w-96 pointer-events-none opacity-45 flex items-center justify-end">
+            <svg viewBox="0 0 320 100" class="w-full h-full" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 100C70 45 120 20 180 20C240 20 280 5 320 0V100H40Z" fill="#90CAF9" fill-opacity="0.5"/>
+                <!-- Kazakh Horn Ornament (Қошқармүйіз) -->
+                <path d="M170 75C170 52 192 42 206 54C216 62 208 76 196 72C188 69 192 58 200 60" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                <path d="M250 75C250 52 228 42 214 54C204 62 212 76 224 72C232 69 228 58 220 60" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                <path d="M210 85V32M210 32C198 20 184 26 188 38M210 32C222 20 236 26 232 38" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                <path d="M275 55C275 35 295 28 308 38C316 45 310 58 298 54" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Mini Book + Sun Logo -->
+                <svg viewBox="0 0 80 80" class="w-11 h-11 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="30" r="14" fill="#FFD43B"/>
+                    <path d="M40 8V13M23 14L27 18M57 14L53 18" stroke="#FCC419" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M12 36C22 33 34 36 40 42C46 36 58 33 68 36V62C58 59 46 62 40 68C34 62 22 59 12 62V36Z" fill="#2196F3" stroke="#0B63B8" stroke-width="2.5"/>
+                    <path d="M16 39C24 37 34 39 40 44C46 39 56 37 64 39V58C56 56 46 58 40 63C34 58 24 56 16 58V39Z" fill="#FFFFFF"/>
+                </svg>
+                <span class="font-display font-extrabold text-lg sm:text-xl text-[#0B63B8] border-l-2 border-sky-300 pl-3">
+                    «Бастауыш білім беру хабы»
+                </span>
+            </div>
+
+            <p class="text-sm sm:text-base font-bold text-[#0A2540]/80 text-center sm:text-left">
+                Бастауыш сынып оқушыларына арналған заманауи білім беру алаңы • 3-сынып
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT INTERACTIVITY ==================== -->
+    <script>
+        // 1. Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Active Navigation Pill Highlight
+        function setActiveNav(id) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.dataset.nav === id) {
+                    link.classList.add('bg-[#0B63B8]', 'text-white', 'shadow-sm');
+                    link.classList.remove('text-[#0A2540]');
+                } else {
+                    link.classList.remove('bg-[#0B63B8]', 'text-white', 'shadow-sm');
+                    link.classList.add('text-[#0A2540]');
+                }
+            });
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => setActiveNav(link.dataset.nav));
+        });
+
+        // 2. Learning Objectives Toggle
+        function toggleObjectives() {
+            const panel = document.getElementById('objectives-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        // 3. Inclusive Font Size Adjustment for Reading Section
+        let currentFontSize = 20; // px
+        function changeReadingSize(delta) {
+            currentFontSize = Math.min(28, Math.max(16, currentFontSize + delta));
+            const article = document.getElementById('reading-text');
+            article.style.fontSize = currentFontSize + 'px';
+        }
+
+        // 4. Toggle Model Answers for Reading Questions
+        function toggleHint(num) {
+            const hint = document.getElementById(`hint-${num}`);
+            hint.classList.toggle('hidden');
+        }
+
+        // 5. Writing Section Live Sentence & Word Counter + Self-Check Score
+        const essayInput = document.getElementById('essay-input');
+        essayInput.addEventListener('input', () => {
+            const text = essayInput.value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            const sentences = text ? text.split(/[.!?]+/).filter(s => s.trim().length > 0).length : 0;
+            document.getElementById('word-count').textContent = words;
+            document.getElementById('sentence-count').textContent = sentences;
+        });
+
+        function clearEssay() {
+            essayInput.value = '';
+            document.getElementById('word-count').textContent = '0';
+            document.getElementById('sentence-count').textContent = '0';
+        }
+
+        function updateWritingScore() {
+            const checked = document.querySelectorAll('.descriptor-check:checked').length;
+            document.getElementById('writing-score').textContent = `${checked} / 3 ұпай`;
+        }
+
+        // 6. Creativity Digital Canvas + Virtual Padlet Board
+        const canvas = document.getElementById('nature-canvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let brushColor = '#16A34A';
+
+        function resizeCanvas() {
+            const wrapper = document.getElementById('canvas-wrapper');
+            if (!wrapper) return;
+            canvas.width = wrapper.clientWidth;
+            canvas.height = wrapper.clientHeight;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 5;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        function setBrushColor(color) {
+            brushColor = color;
+        }
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDraw(e) {
+            isDrawing = true;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            if (e.touches) e.preventDefault();
+            const pos = getPos(e);
+            ctx.strokeStyle = brushColor;
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function stopDraw() {
+            isDrawing = false;
+        }
+
+        canvas.addEventListener('mousedown', startDraw);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDraw);
+        canvas.addEventListener('mouseleave', stopDraw);
+        canvas.addEventListener('touchstart', startDraw, { passive: false });
+        canvas.addEventListener('touchmove', draw, { passive: false });
+        canvas.addEventListener('touchend', stopDraw);
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function addCanvasToBoard() {
+            const titleInput = document.getElementById('craft-title');
+            const title = titleInput.value.trim() || 'Менің табиғат суретім';
+            const dataUrl = canvas.toDataURL('image/png');
+            appendShowcaseCard(title, dataUrl);
+            titleInput.value = '';
+        }
+
+        function handleCraftUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const titleInput = document.getElementById('craft-title');
+            const title = titleInput.value.trim() || 'Менің қолөнерім';
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                appendShowcaseCard(title, e.target.result);
+                titleInput.value = '';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function appendShowcaseCard(title, imgSrc) {
+            const grid = document.getElementById('showcase-grid');
+            const card = document.createElement('div');
+            card.className = 'p-3 rounded-2xl bg-purple-50 border border-purple-200';
+            card.innerHTML = `
+                <div class="h-24 rounded-xl bg-white flex items-center justify-center mb-2 overflow-hidden">
+                    <img src="${imgSrc}" alt="${title}" class="w-full h-full object-contain">
+                </div>
+                <p class="font-extrabold text-sm text-[#0A2540] truncate">${title}</p>
+            `;
+            grid.prepend(card);
+        }
+
+        // 7. 10-Question Interactive Self-Check Quiz
+        const quizData = [
+            {
+                q: "1. Мәтінде қай мезгіл суреттелген?",
+                options: ["Қыс", "Күз", "Көктем"],
+                correct: 1,
+                explanation: "Дұрыс! Мәтін «Күз мезгілі келіп, табиғат керемет түске боялды» деп басталады."
+            },
+            {
+                q: "2. Тиіндер қысқа не жинайды?",
+                options: ["Жаңғақ", "Гүл", "Тас"],
+                correct: 0,
+                explanation: "Дұрыс! Тиіндер қысқа арналған жаңғақтар мен тұқымдарды жинайды."
+            },
+            {
+                q: "3. Аюлар күзде неге дайындалады?",
+                options: ["Қалың ұйқыға", "Жылы жаққа ұшуға"],
+                correct: 0,
+                explanation: "Дұрыс! Аюлар қоңыр күзде қорек жинап, қалың ұйқыға әзірленеді."
+            },
+            {
+                q: "4. Күзде ағаш жапырақтары қандай түске боялады?",
+                options: ["Сары, қызыл", "Көк, күлгін"],
+                correct: 0,
+                explanation: "Дұрыс! Ағаштардың жапырақтары сары, қызыл түске енеді."
+            },
+            {
+                q: "5. Табиғатты қорғау кімнің міндеті?",
+                options: ["Әрбір адамның", "Тек орманшының"],
+                correct: 0,
+                explanation: "Дұрыс! Орманды, өзендер мен көлдерді таза ұстау – әрбір саналы азаматтың міндеті."
+            },
+            {
+                q: "6. Мәтіннің негізгі ойы не?",
+                options: ["Табиғатты аялау", "Қысқа дайындалу"],
+                correct: 0,
+                explanation: "Дұрыс! Мәтіннің басты ойы – ортақ үйіміз табиғатты аялау және қорғау."
+            },
+            {
+                q: "7. «Сыбдырлай ұшады» тіркесі неге қатысты айтылған?",
+                options: ["Жапырақтарға", "Құстарға"],
+                correct: 0,
+                explanation: "Дұрыс! Ағаш жапырақтары желмен сыбдырлай ұшады."
+            },
+            {
+                q: "8. Жыл мезгілдері нешеге бөлінеді?",
+                options: ["3", "4", "5"],
+                correct: 1,
+                explanation: "Дұрыс! Жыл мезгілдері 4-ке бөлінеді: көктем, жаз, күз, қыс."
+            },
+            {
+                q: "9. Қоршаған ортаны таза ұстау үшін не істеу керек?",
+                options: ["Қоқыс тастамау", "Ағаш кесу"],
+                correct: 0,
+                explanation: "Дұрыс! Табиғатты таза ұстау үшін қоқыс тастамау керек."
+            },
+            {
+                q: "10. Табиғатты қорғасақ, ол бізге не сыйлайды?",
+                options: ["Таза ауа мен мол байлық", "Қатты жел"],
+                correct: 0,
+                explanation: "Дұрыс! Егер біз табиғатты қорғасақ, ол бізге таза ауасы мен мол байлығын сыйлайды."
+            }
+        ];
+
+        function renderQuiz() {
+            const wrapper = document.getElementById('quiz-questions-wrapper');
+            wrapper.innerHTML = quizData.map((item, qIdx) => `
+                <div id="q-card-${qIdx}" class="bg-white rounded-2xl p-5 sm:p-6 border border-sky-200 transition-colors">
+                    <p class="font-extrabold text-lg text-[#0A2540] mb-3.5">${item.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-${item.options.length} gap-3">
+                        ${item.options.map((opt, optIdx) => `
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl border-2 border-slate-100 hover:border-[#0B63B8]/40 hover:bg-sky-50/50 cursor-pointer font-bold text-[#0A2540] transition-all">
+                                <input type="radio" name="quiz_q_${qIdx}" value="${optIdx}" class="w-5 h-5 text-[#0B63B8] focus:ring-[#0B63B8]">
+                                <span>${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="q-feedback-${qIdx}" class="hidden mt-3 pt-3 border-t border-slate-100 text-sm font-extrabold"></div>
+                </div>
+            `).join('');
+        }
+
+        function gradeQuiz() {
+            let score = 0;
+            quizData.forEach((item, qIdx) => {
+                const selected = document.querySelector(`input[name="quiz_q_${qIdx}"]:checked`);
+                const card = document.getElementById(`q-card-${qIdx}`);
+                const feedback = document.getElementById(`q-feedback-${qIdx}`);
+                feedback.classList.remove('hidden');
+
+                if (selected && parseInt(selected.value, 10) === item.correct) {
+                    score++;
+                    card.classList.remove('border-sky-200', 'border-rose-300');
+                    card.classList.add('border-emerald-400', 'bg-emerald-50/30');
+                    feedback.className = 'mt-3 pt-3 border-t border-emerald-200 text-sm font-extrabold text-emerald-700';
+                    feedback.textContent = item.explanation;
+                } else {
+                    card.classList.remove('border-sky-200', 'border-emerald-400');
+                    card.classList.add('border-rose-300', 'bg-rose-50/30');
+                    feedback.className = 'mt-3 pt-3 border-t border-rose-200 text-sm font-extrabold text-rose-700';
+                    feedback.textContent = `❌ Дұрыс жауап: «${item.options[item.correct]}». ${item.explanation}`;
+                }
+            });
+
+            const resultBox = document.getElementById('quiz-result-box');
+            const heading = document.getElementById('result-score-heading');
+            const feedbackText = document.getElementById('result-feedback-text');
+            const stars = document.getElementById('result-stars');
+
+            heading.textContent = `Сенің нәтижең: ${score} / ${quizData.length} ұпай!`;
+            if (score >= 9) {
+                stars.textContent = '🏆 🌟 🎉';
+                feedbackText.textContent = 'Керемет! Сен тақырыпты өте жақсы меңгердің! Жарайсың!';
+            } else if (score >= 6) {
+                stars.textContent = '⭐⭐ 👍';
+                feedbackText.textContent = 'Жақсы нәтиже! Қате кеткен сұрақтардың түсіндірмесін оқып шық.';
+            } else {
+                stars.textContent = '🌱 📖';
+                feedbackText.textContent = 'Мәтінді тағы бір рет мұқият оқып, тестті қайта тапсырып көр!';
+            }
+
+            resultBox.classList.remove('hidden');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-form').reset();
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            resizeCanvas();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
